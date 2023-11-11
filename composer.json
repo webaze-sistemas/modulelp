@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SeuNamespace\\": "src/"
+            "webaze/modulelp\\": "src/"
         }
     }
 }
