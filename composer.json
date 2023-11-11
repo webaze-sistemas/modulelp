@@ -1,0 +1,20 @@
+{
+    "name": "webaze/modulelp",
+    "description": "Módulo Land Page",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Webaze Marketing",
+            "email": "alexandre@webaze.com.br"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SeuNamespace\\": "src/"
+        }
+    }
+}
