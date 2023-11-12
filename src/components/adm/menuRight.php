@@ -1,6 +1,6 @@
 <?php
 
-use app\models\User;
+use webaze\modulelp\models\User;
 
 return [
     [

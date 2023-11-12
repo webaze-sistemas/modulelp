@@ -3,8 +3,8 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\assets\AppAsset;
-use app\components\ConfigSite;
+use webaze\modulelp\assets\AppAsset;
+use webaze\modulelp\components\ConfigSite;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;

@@ -2,8 +2,8 @@
 
 namespace webaze\modulelp\components;
 
-use app\helpers\App;
-use app\models\Config;
+use webaze\modulelp\helpers\App;
+use webaze\modulelp\models\Config;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
