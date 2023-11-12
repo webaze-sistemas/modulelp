@@ -1,7 +1,6 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
+$params = [];
 
 $config = [
     'id' => 'basic',
@@ -11,10 +10,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-        '@images' => dirname('').'/web/images',
-        '@uploadImages' => dirname(__DIR__).'/web/images',
-        '@regulation' => dirname(__DIR__).'/web/images/uploads/regulation'
+        '@npm'   => '@vendor/npm-asset'
     ],
     'components' => [
         'request' => [
@@ -34,25 +30,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mutex' => [
-            'class' => 'yii\redis\Mutex',
-            'redis' => [
-                'hostname' => 'localhost',
-                'port' => 6379,
-                'database' => 0,
-            ]
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'site.libaps@gmail.com',
-                'password' => 'libaps2322',
-                'port' => '587',
-                'encryption' => 'tls',
-            ],
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -62,7 +39,6 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

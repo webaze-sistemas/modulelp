@@ -1,5 +1,6 @@
 <?php
-namespace app\components\grid;
+
+namespace webaze\modulelp\components\grid;
 
 class GridView extends \yii\grid\GridView
 {

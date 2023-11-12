@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace webaze\modulelp\components;
 
 use app\helpers\App;
 use app\models\Config;

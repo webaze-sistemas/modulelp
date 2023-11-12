@@ -1,5 +1,5 @@
 <?php
-namespace app\widgets;
+namespace webaze\modulelp\widgets;
 
 use Yii;
 

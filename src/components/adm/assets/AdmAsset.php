@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\components\adm\assets;
+namespace webaze\modulelp\components\adm\assets;
 
 
 use yii\web\AssetBundle;

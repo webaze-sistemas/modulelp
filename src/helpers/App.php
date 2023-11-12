@@ -1,6 +1,6 @@
 <?php
 
-namespace app\helpers;
+namespace webaze\modulelp\helpers;
 
 use Yii;
 use yii\db\Query;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\helpers;
+namespace webaze\modulelp\helpers;
 
 
 class NumberHelper

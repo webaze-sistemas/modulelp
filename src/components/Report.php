@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace webaze\modulelp\components;
 
 use yii\base\Model;
 use yii\data\ArrayDataProvider;

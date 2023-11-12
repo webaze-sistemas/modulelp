@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\adm;
+namespace webaze\modulelp\components\adm;
 
 
 use yii\bootstrap\Modal;
