@@ -3,6 +3,9 @@
 namespace webaze\modulelp\controllers;
 
 use yii\web\Controller;
+use webaze\modulelp\models\Click;
+use webaze\modulelp\models\Lead;
+use Yii;
 
 class SiteController extends Controller
 {
