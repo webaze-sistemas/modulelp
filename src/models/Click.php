@@ -106,6 +106,8 @@ class Click extends \yii\db\ActiveRecord
             self::getOrSetCookie($params['lead_id']);
         }
 
+        $params['lead_id'] = $cookie;
+
         $params['ip'] = $_SERVER['REMOTE_ADDR'] ?? '';
 
         if (!$model = self::findOne(['lead_id' => $cookie])) {
