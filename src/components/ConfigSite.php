@@ -67,4 +67,15 @@ class ConfigSite
     {
         return ArrayHelper::getValue(Config::getConfig(), 'key_words');
     }
+
+
+    public static function youtube()
+    {
+        return ArrayHelper::getValue(Config::getConfig(), 'metadata.youtube');
+    }
+
+    public static function tikTok()
+    {
+        return ArrayHelper::getValue(Config::getConfig(), 'metadata.tiktok');
+    }
 }
