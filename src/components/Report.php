@@ -17,6 +17,17 @@ abstract class Report extends Model
     abstract public function getFilters();
     abstract protected function getDataColumns();
 
+    protected function setFilters(array $filters)
+    {
+        foreach ($filters as $filter => $value) {
+            if (!isset($this->searchQuery[$filter])) {
+                $this->searchQuery[$filter] = $value;
+            }
+        }
+
+        return $this->searchQuery;
+    }
+    
     public function getColumns()
     {
         if (!$this->getData()) {
