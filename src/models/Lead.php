@@ -4,6 +4,7 @@ namespace webaze\modulelp\models;
 
 use webaze\modulelp\helpers\App;
 use webaze\modulelp\helpers\NumberHelper;
+use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\helpers\Json;
 
@@ -45,7 +46,10 @@ class Lead extends \yii\db\ActiveRecord
             [['name', 'email'], 'string', 'max' => 150],
             [['phone'], 'string', 'max' => 20],
             [['message'], 'string', 'max' => 1024],
-            [['phoneFormatted', 'message', 'name', 'email'], 'required']
+            [['phoneFormatted', 'message', 'name', 'email'], 'required'],
+            ['reCaptcha', ReCaptchaValidator2::class,
+              'secret' => \Yii::$app->components['reCaptcha']['siteKeyV2'],
+            ]
         ];
     }
 

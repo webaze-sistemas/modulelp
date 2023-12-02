@@ -25,7 +25,8 @@
         "lubosdz/yii2-captcha-extended": "^1.0",
         "sendgrid/sendgrid": "^7.11",
         "ramsey/uuid": "^4.2",
-        "kekaadrenalin/yii2-module-recaptcha-v3": "*"
+        "kekaadrenalin/yii2-module-recaptcha-v3": "*",
+        "himiklab/yii2-recaptcha-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
