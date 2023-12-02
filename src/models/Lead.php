@@ -25,6 +25,8 @@ use yii\helpers\Json;
  */
 class Lead extends \yii\db\ActiveRecord
 {
+    public $reCaptcha;
+    
     /**
      * {@inheritdoc}
      */
