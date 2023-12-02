@@ -47,9 +47,7 @@ class Lead extends \yii\db\ActiveRecord
             [['phone'], 'string', 'max' => 20],
             [['message'], 'string', 'max' => 1024],
             [['phoneFormatted', 'message', 'name', 'email'], 'required'],
-            ['reCaptcha', ReCaptchaValidator2::class,
-              'secret' => \Yii::$app->components['reCaptcha']['siteKeyV2'],
-            ]
+            ['reCaptcha', ReCaptchaValidator2::class]
         ];
     }
 
