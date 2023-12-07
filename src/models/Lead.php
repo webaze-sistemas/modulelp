@@ -17,6 +17,7 @@ use yii\helpers\Json;
  * @property string|null $email
  * @property string|null $message
  * @property int|null $accept_marketing_email
+ * @property int|null $send
  * @property string|null $created_at
  * @property string|null $updated_at
  * @property string|null $metadata
@@ -26,6 +27,7 @@ use yii\helpers\Json;
 class Lead extends \yii\db\ActiveRecord
 {
     public $reCaptcha;
+    public $requiredReCaptcha = true;
     
     /**
      * {@inheritdoc}
@@ -40,7 +42,7 @@ class Lead extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
+        $rules = [
             [['accept_marketing_email', 'send'], 'integer'],
             [['created_at', 'updated_at', 'phoneFormatted'], 'safe'],
             [['email'], 'email'],
@@ -49,8 +51,13 @@ class Lead extends \yii\db\ActiveRecord
             [['phone'], 'string', 'max' => 20],
             [['message'], 'string', 'max' => 1024],
             [['phoneFormatted', 'message', 'name', 'email'], 'required'],
-            ['reCaptcha', ReCaptchaValidator2::class]
         ];
+
+        if ($this->requiredReCaptcha) {
+            $rules[] = ['reCaptcha', ReCaptchaValidator2::class];
+        }
+
+        return $rules;
     }
 
     /**
