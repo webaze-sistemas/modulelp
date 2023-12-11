@@ -27,18 +27,6 @@ $logo = $host . '/web/images/' . $nome . '/' . Yii::$app->session->get('posto_lo
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
 
-<!--    <meta name="google-site-verification" content="IBxwO5a4h2dN7x0kOObskfyGljZZ2XDa8Nulba8sYFA" />-->
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y5W17TQLWC"></script>-->
-    <script>
-        // window.dataLayer = window.dataLayer || [];
-        // function gtag(){dataLayer.push(arguments);}
-        // gtag('js', new Date());
-        //
-        // gtag('config', 'G-Y5W17TQLWC');
-    </script>
-
     <style type="text/css">
 
         @media screen and (max-width: 700px){
