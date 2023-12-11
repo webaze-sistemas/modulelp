@@ -37,7 +37,7 @@ class Controller extends \yii\web\Controller
 
     public function isLogged()
     {
-        $cookie = \Yii::$app->request->cookies->get('user');
+        $cookie = \Yii::$app->request->cookies->get('user_lp');
 
         if ($cookie) {
             return true;
