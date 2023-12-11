@@ -4,6 +4,7 @@ namespace webaze\modulelp\models\forms;
 
 use webaze\modulelp\models\Lead;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 class LeadForm extends \webaze\modulelp\components\Report
 {
@@ -31,10 +32,26 @@ class LeadForm extends \webaze\modulelp\components\Report
     protected function getDataColumns()
     {
         return [
-            'name' => ['label' => 'Nome'],
+            'name' => ['label' => 'Nome',],
             'email' => ['label' => 'E-Mail'],
             'phoneFormatted' => ['label' => 'Fone'],
-            'message' => ['label' => 'Mensagem'],
+            'message' => [
+                'label' => 'Mensagem',
+                'format' => 'raw',
+                'contentOptions' => [
+                    'class' => 'fw-600 text-nowrap',
+                ],
+                'value' => function (Lead $model) {
+                    $message = str_replace("\n", '<br>', $model->message);
+                    return Html::tag('span', substr($model->message, 0, 30) . '...', [
+                        'data-message' => $message,
+                        'class' => 'message',
+                        'data-toggle' => 'tooltip',
+                        'title' => 'Clique para a mensagem completa',
+                        'data-placement' => 'left'
+                    ]);
+                }
+            ],
         ];
     }
 }
