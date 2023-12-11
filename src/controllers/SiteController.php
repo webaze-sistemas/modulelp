@@ -34,6 +34,18 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        \Yii::$app->response->cookies->remove('user_lp');
+
+        $session = Yii::$app->session;
+        $session->destroy();
+
+        return $this->redirect(['login']);
+    }
+
     public function actionOk()
     {
         $name = Yii::$app->session->getFlash('cadastro-ok');

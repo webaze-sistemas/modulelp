@@ -32,6 +32,9 @@ $logo = $host . '/web/images/logo.png';
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/site/logout">Sair</a>
+                    </li>
                 </ul>
             </nav>
         </div>
