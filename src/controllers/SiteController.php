@@ -2,6 +2,7 @@
 
 namespace webaze\modulelp\controllers;
 
+use app\models\managers\LoginManager;
 use yii\web\Controller;
 use webaze\modulelp\models\Click;
 use webaze\modulelp\models\Lead;
@@ -48,5 +49,27 @@ class SiteController extends Controller
     public function actionError()
     {
         return $this->render('error');
+    }
+
+    public function actionLogin()
+    {
+        $this->layout = 'main';
+
+        $model = new LoginManager();
+
+        if ($cookie = \Yii::$app->request->cookies->getValue('user')) {
+            if ($cookie['id'] > 0) {
+                return $this->redirect(['adm/dashboard/index']);
+            }
+        }
+
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->redirect(['adm/dashboard/index']);
+        }
+
+        $model->pass = '';
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 }
