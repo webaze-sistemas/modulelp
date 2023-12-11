@@ -44,7 +44,7 @@ class Lead extends \yii\db\ActiveRecord
     public function rules()
     {
         
-      $reCaptchaByParam = ArrayHelper::getValue(Yii::$app->params, 'reCaptcha', false);
+        $reCaptchaByParam = ArrayHelper::getValue(Yii::$app->params, 'reCaptcha', false);
 
         $rules = [
             [['accept_marketing_email', 'send'], 'integer'],
