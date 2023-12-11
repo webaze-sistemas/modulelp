@@ -6,6 +6,7 @@ use webaze\modulelp\helpers\App;
 use webaze\modulelp\helpers\NumberHelper;
 use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
 /**
@@ -42,6 +43,9 @@ class Lead extends \yii\db\ActiveRecord
      */
     public function rules()
     {
+        
+      $reCaptchaByParam = ArrayHelper::getValue(Yii::$app->params, 'reCaptcha', false);
+
         $rules = [
             [['accept_marketing_email', 'send'], 'integer'],
             [['created_at', 'updated_at', 'phoneFormatted'], 'safe'],
@@ -53,7 +57,7 @@ class Lead extends \yii\db\ActiveRecord
             [['phoneFormatted', 'message', 'name', 'email'], 'required'],
         ];
 
-        if ($this->requiredReCaptcha) {
+        if ($reCaptchaByParam) {
             $rules[] = ['reCaptcha', ReCaptchaValidator2::class];
         }
 
