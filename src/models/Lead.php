@@ -54,8 +54,13 @@ class Lead extends \yii\db\ActiveRecord
             [['name', 'email'], 'string', 'max' => 150],
             [['phone'], 'string', 'max' => 20],
             [['message'], 'string', 'max' => 1024],
-            [['phoneFormatted', 'message', 'name', 'email'], 'required'],
+            [['phoneFormatted', 'name', 'email'], 'required'],
         ];
+
+        $params = Yii::$app->params;
+        if (!isset($params['fieldMessageRequired']) || ArrayHelper::getValue($params, 'fieldMessageRequired') === true) {
+            $rules[] = [['message'], 'required'];
+        }
 
         if ($reCaptchaByParam) {
             $rules[] = ['reCaptcha', ReCaptchaValidator2::class];
@@ -90,6 +95,8 @@ class Lead extends \yii\db\ActiveRecord
         }
 
         $this->updated_at = date('Y-m-d h:i:s');
+        $this->metadata = Json::encode($this->metadata);
+
         return parent::beforeSave($insert);
     }
 
