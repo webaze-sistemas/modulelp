@@ -50,7 +50,7 @@ class Lead extends \yii\db\ActiveRecord
             [['accept_marketing_email', 'send'], 'integer'],
             [['created_at', 'updated_at', 'phoneFormatted'], 'safe'],
             [['email'], 'email'],
-            [['metadata'], 'string'],
+            [['metadata'], 'safe'],
             [['name', 'email'], 'string', 'max' => 150],
             [['phone'], 'string', 'max' => 20],
             [['message'], 'string', 'max' => 1024],
