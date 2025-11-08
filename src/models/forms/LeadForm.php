@@ -21,19 +21,49 @@ class LeadForm extends \webaze\modulelp\components\Report
             ]);
         }
 
+        if (!empty($filters['pe'])) {
+            $exp = explode(' - ', $filters['pe']);
+
+            $start = self::toDbDate($exp[0]);
+            $end = self::toDbDate($exp[1]);
+
+            $rows->andWhere(['between', 'created_at',  $start, $end]);
+        }
+
         return $rows;
     }
 
     public function getFilters()
     {
-        return $this->setFilters(['q' => null, 'p' => null, 's' => -1]);
+        $filter = $this->searchQuery;
+
+        if (!isset($filter['pe'])) {
+            $filter['pe'] = date('d/m/Y', strtotime('-29 day')) . ' - ' . date('d/m/Y');
+        }
+
+        return $filter;// $this->setFilters(['q' => null, 'p' => null, 's' => -1]);
     }
 
     protected function getDataColumns()
     {
         return [
-            'name' => ['label' => 'Nome',],
-            'email' => ['label' => 'E-Mail'],
+            'name' => [
+                'label' => 'Nome / email',
+                'format' => 'raw',
+                'value' => function (Lead $model) {
+                    return "<b>{$model->name}</b> <br> <small>{$model->email}</small>";
+                }
+            ],
+
+            'date' => [
+                'label' => 'Data',
+                'format' => 'raw',
+                'value' => function (Lead $model) {
+                    return \Yii::$app->formatter->asDate($model->created_at, 'php:d/m/Y H:i') . ' <br> ' .
+                        \Yii::$app->formatter->asRelativeTime($model->updated_at);
+                }
+            ],
+
             'phoneFormatted' => ['label' => 'Fone'],
             'message' => [
                 'label' => 'Mensagem',
@@ -43,7 +73,7 @@ class LeadForm extends \webaze\modulelp\components\Report
                 ],
                 'value' => function (Lead $model) {
                     $message = str_replace("\n", '<br>', $model->message);
-                    return Html::tag('span', substr($model->message, 0, 30) . '...', [
+                    return Html::tag('span', substr($model->message, 0, 50) . '...', [
                         'data-message' => $message,
                         'class' => 'message',
                         'data-toggle' => 'tooltip',

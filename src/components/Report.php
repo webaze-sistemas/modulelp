@@ -12,6 +12,7 @@ abstract class Report extends Model
     public $totalItems = 0;
     public $searchQuery = null;
     public $showFilterAdvanced = false;
+    const DB_DATE_FORMAT = 'php:Y-m-d';
 
     abstract protected function getData();
     abstract public function getFilters();
@@ -55,6 +56,15 @@ abstract class Report extends Model
         return $columns;
     }
 
+
+    public static function toDbDate($value)
+    {
+        $locale = strtolower(substr(\Yii::$app->formatter->locale, 0, 2));
+        if ($locale == 'pt') {
+            $value = \DateTime::createFromFormat('d/m/Y', $value);
+        }
+        return \Yii::$app->formatter->asDate($value, self::DB_DATE_FORMAT);
+    }
 
     public function getArrayDataProvider()
     {
